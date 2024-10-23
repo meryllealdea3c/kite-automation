@@ -13,13 +13,13 @@ namespace Kite_API_Automation
     public class MainClass
     {
         [Test]
-        public void GetTest()
+        public void VerifyGetRecord()
         {
-            Functions.GetResponseCode().Wait();
+            Functions.GetRecord().Wait();
         }
 
         [Test]
-        public void PostTest()
+        public void VerifyCreateRecord()
         {
             Payload payload = new Payload
             {
@@ -27,11 +27,11 @@ namespace Kite_API_Automation
                 Name = "test",
             };
 
-            Functions.PostPayload(payload).Wait();
+            Functions.CreateRecord(payload).Wait();
         }
 
         [Test]
-        public void PutTest()
+        public void VerifyUpdateRecrd()
         {
             Payload payload = new Payload
             {
@@ -39,18 +39,18 @@ namespace Kite_API_Automation
                 Name = "testing",
             };
 
-            Functions.PutPayload(payload, payload.Id).Wait();
+            Functions.UpdateRecord(payload, payload.Id).Wait();
         }
 
         [Test]
-        public void DeleteTest()
+        public void VerifyDeleteRecord()
         {
             Payload payload = new Payload
             {
                 Id = 1
             };
 
-            Functions.DeleteResponse(payload.Id).Wait();
+            Functions.DeleteRecord(payload.Id).Wait();
         }
     }
 }
