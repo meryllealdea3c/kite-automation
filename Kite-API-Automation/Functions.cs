@@ -4,7 +4,9 @@ using System.ComponentModel;
 using System.Linq;
 using System.Net;
 using System.Net.Http.Headers;
+using System.Net.Http.Json;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Kite_API_Automation
@@ -20,6 +22,23 @@ namespace Kite_API_Automation
                 Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes($":{"Add token here"}")));
 
                 HttpResponseMessage response = await client.GetAsync($"{"Add URL here"}");
+
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(responseBody);
+                Console.WriteLine(response.StatusCode);
+            }
+        }
+
+        public static async Task PostPayload(Payload payload)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes($":{"Add token here"}")));
+
+                HttpResponseMessage response = await client.PostAsJsonAsync($"{"Add URL here"}", payload);
 
                 response.EnsureSuccessStatusCode();
                 string responseBody = await response.Content.ReadAsStringAsync();
