@@ -13,9 +13,21 @@ namespace Kite_API_Automation
     public class MainClass
     {
         [Test]
-        public void Test()
+        public void GetTest()
         {
             Functions.GetResponseCode().Wait();
+        }
+
+        [Test]
+        public void PostTest()
+        {
+            Payload payload = new Payload
+            {
+                Id = 1,
+                Name = "test",
+            };
+
+            Functions.PostResponseCode(payload).Wait();
         }
     }
 }
