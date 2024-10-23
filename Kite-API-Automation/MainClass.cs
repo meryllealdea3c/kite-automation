@@ -27,7 +27,7 @@ namespace Kite_API_Automation
                 Name = "test",
             };
 
-            Functions.PostResponseCode(payload).Wait();
+            Functions.PostPayload(payload).Wait();
         }
     }
 }

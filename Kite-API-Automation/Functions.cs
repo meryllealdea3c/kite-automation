@@ -30,7 +30,7 @@ namespace Kite_API_Automation
             }
         }
 
-        public static async Task PostResponseCode(Payload payload)
+        public static async Task PostPayload(Payload payload)
         {
             using (HttpClient client = new HttpClient())
             {
