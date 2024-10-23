@@ -29,5 +29,28 @@ namespace Kite_API_Automation
 
             Functions.PostPayload(payload).Wait();
         }
+
+        [Test]
+        public void PutTest()
+        {
+            Payload payload = new Payload
+            {
+                Id = 1,
+                Name = "testing",
+            };
+
+            Functions.PutPayload(payload, payload.Id).Wait();
+        }
+
+        [Test]
+        public void DeleteTest()
+        {
+            Payload payload = new Payload
+            {
+                Id = 1
+            };
+
+            Functions.DeleteResponse(payload.Id).Wait();
+        }
     }
 }

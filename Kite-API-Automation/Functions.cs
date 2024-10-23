@@ -46,5 +46,39 @@ namespace Kite_API_Automation
                 Console.WriteLine(response.StatusCode);
             }
         }
+
+        public static async Task PutPayload(Payload payload, long id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes($":{"Add token here"}")));
+
+                HttpResponseMessage response = await client.PutAsJsonAsync($"{"Add URL here"}/{id}", payload);
+
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(responseBody);
+                Console.WriteLine(response.StatusCode);
+            }
+        }
+
+        public static async Task DeleteResponse(long id)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Basic",
+                Convert.ToBase64String(System.Text.ASCIIEncoding.ASCII.GetBytes($":{"Add token here"}")));
+
+                HttpResponseMessage response = await client.DeleteAsync($"{"Add URL here"}/{id}");
+
+                response.EnsureSuccessStatusCode();
+                string responseBody = await response.Content.ReadAsStringAsync();
+                Console.WriteLine(responseBody);
+                Console.WriteLine(response.StatusCode);
+            }
+        }
     }
 }
