@@ -13,7 +13,7 @@ namespace Kite_API_Automation
 {
     public class Functions
     {
-        public static async Task GetResponseCode()
+        public static async Task GetRecord()
         {
             using (HttpClient client = new HttpClient())
             {
@@ -30,7 +30,7 @@ namespace Kite_API_Automation
             }
         }
 
-        public static async Task PostPayload(Payload payload)
+        public static async Task CreateRecord(Payload payload)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -47,7 +47,7 @@ namespace Kite_API_Automation
             }
         }
 
-        public static async Task PutPayload(Payload payload, long id)
+        public static async Task UpdateRecord(Payload payload, long id)
         {
             using (HttpClient client = new HttpClient())
             {
@@ -64,7 +64,7 @@ namespace Kite_API_Automation
             }
         }
 
-        public static async Task DeleteResponse(long id)
+        public static async Task DeleteRecord(long id)
         {
             using (HttpClient client = new HttpClient())
             {
